@@ -5,8 +5,7 @@ on:
   # 2. Run on test code changes
   push:
     paths:
-      - 'specs/**'
-      - 'pageobjects/**'
+      - 'tests/**'
     branches: [main, master]
   pull_request:
     branches: [main, master]
