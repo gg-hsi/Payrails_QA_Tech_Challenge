@@ -1,0 +1,20 @@
+{
+  "Meta Data": {
+    "1. Information": "Monthly Prices and Volumes for Digital Currency",
+    "2. Digital Currency Code": "BTC",
+    "3. Digital Currency Name": "Bitcoin",
+    "4. Market Code": "EUR",
+    "5. Market Name": "Euro",
+    "6. Last Refreshed": "2025-01-24 00:00:00",
+    "7. Time Zone": "UTC"
+  },
+  "Time Series (Digital Currency Monthly)": {
+    "testDate": {
+      "1. open": "223.2100",
+      "2. high": "223.2400",
+      "3. low": "223.2000",
+      "4. close": "223.2200",
+      "5. volume": "1577"
+    }
+  }
+}
