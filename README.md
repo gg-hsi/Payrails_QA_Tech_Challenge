@@ -16,7 +16,7 @@
                 <tr><th>Step #</th><th>Description</th></tr>
                 <tr><td>1</td><td>Enter the following parameters in Postman:<br>1- function:"TIME_SERIES_INTRADAY"<br>2- symbol:"AAPL"<br>3- interval:"1min"<br>4- apikey:"API_KEY"<br>Send the HTTP request</td></tr>
                 <tr><td>3</td><td>Check that response code is 200</td></tr>
-                <tr><td>2</td><td>Check that response is successfull and contains all expected keys (<a href="https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo">check data structrue</a>)</td></tr>
+                <tr><td>2</td><td>Check that response is successfull and contains all<br>expected keys (<a href="https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo">check data structrue</a>)</td></tr>
             </table>
         </td>
     </tr>
@@ -28,7 +28,7 @@
                 <tr><th>Step #</th><th>Description</th></tr>
                 <tr><td>1</td><td>Enter the following parameters in Postman:<br>1- function:"DIGITAL_CURRENCY_MONTHLY"<br>2- symbol:"BTC"<br>3- market:"EUR"<br>4- apikey:"API_KEY"<br>Send the HTTP request</td></tr>
                 <tr><td>2</td><td>Check that response code is 200</td></tr>
-                <tr><td>3</td><td>Check that response is successfull and contains all expected keys (<a href="https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=EUR&apikey=demo">check data structrue</a>)</td></tr>
+                <tr><td>3</td><td>Check that response is successfull and contains all<br>expected keys (<a href="https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_MONTHLY&symbol=BTC&market=EUR&apikey=demo">check data structrue</a>)</td></tr>
             </table>
         </td>
     </tr>
@@ -41,13 +41,15 @@
                 <tr><td>1</td><td>Enter the following parameters in Postman:<br>1- function:"DIGITAL_CURRENCY_MONTHLY"<br>2- market:"EUR"<br>3- apikey:"API_KEY"<br>Send the HTTP request</td></tr>
                 <tr><td>2</td><td>Check that response code is 200</td></tr>
                 <tr><td>3</td><td>Check that response contains the following JSON key:<br>
-    "Error Message": "Invalid API call. Please retry or visit the documentation (https://www.alphavantage.co/documentation/) for DIGITAL_CURRENCY_MONTHLY."</td></tr>
+    "Error Message": "Invalid API call. Please retry <br>or visit the documentation <br>(https://www.alphavantage.co/documentation/) <br>for DIGITAL_CURRENCY_MONTHLY."</td></tr>
             </table>
         </td>
     </tr>
 
 </table>
+
 ## Automation
+
 All the above tests were automated (check folder 'tests'):
 
 ```sh
