@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import responseExample from '../../data/intraday.json';
 import { fixtures as test } from '../../fixture';
+import { IntraDayData } from '../../types';
 
 test.describe('Market News', () => {
   const endpoint = 'TIME_SERIES_INTRADAY';
@@ -19,9 +20,9 @@ test.describe('Market News', () => {
     // Make the GET request
     const response = await request.get(url);
     expect(response.ok()).toBeTruthy();
-    const responseBody = await response.json();
+    const responseBody: IntraDayData = await response.json();
     // No Error in response
-    expect(responseBody).not.toHaveProperty('Error Message');
+    expect(responseBody, "response shouldn't contain an error").not.toHaveProperty('Error Message');
 
     //Validate response Data structure
     Object.keys(responseBody).forEach((key) => expect(responseExample).toHaveProperty(key));
@@ -30,6 +31,8 @@ test.describe('Market News', () => {
     expect(Object.keys(responseExample['Meta Data'])).toEqual(
       Object.keys(responseBody['Meta Data']),
     );
+    // response should contain the most recent 100 intraday OHLCV bars by default when the outputsize parameter is not set
+    expect(Object.keys(responseBody['Time Series (1min)']).length).toBe(100);
 
     //Validate Time Series Data structure
     Object.keys(responseBody['Time Series (1min)']).forEach((key) => {
@@ -37,13 +40,14 @@ test.describe('Market News', () => {
         Object.keys(responseBody['Time Series (1min)'][key]),
       );
     });
-    // No Error in response
-    expect(responseBody['Error Message']).toBeFalsy();
+    //Validate Time Series date objects keys
+    Object.keys(responseBody['Time Series (1min)']).forEach((date) =>
+      expect(Date.parse(date)).toBeTruthy(),
+    );
 
-    // Validate the structure of the response
-    expect(responseBody['Meta Data']).toBeDefined();
+    // Validate the date in the response
     expect(responseBody['Meta Data']['1. Information']).toBe(
-      'Intraday (1min) open, high, low, close prices and volume',
+      responseExample['Meta Data']['1. Information'],
     );
     expect(responseBody['Meta Data']['2. Symbol']).toBe(params.symbol);
     expect(responseBody['Meta Data']['4. Interval']).toBe(params.interval);
@@ -66,6 +70,6 @@ test.describe('Market News', () => {
     const responseBody = await response.json();
 
     // Error in response
-    expect(responseBody).toHaveProperty('Error Message');
+    expect(responseBody, 'response should contain an error').toHaveProperty('Error Message');
   });
 });

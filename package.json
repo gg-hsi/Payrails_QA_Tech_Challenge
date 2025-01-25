@@ -8,9 +8,7 @@
     "lint": "eslint .",
     "test": "playwright test",
     "test:ci": "playwright test -j 3",
-    "test:Chrome": "playwright test --project='chromium'",
-    "test:Firefox": "playwright test --project='firefox'",
-    "test:Safari": "playwright test --project='webkit'"
+    "test:Chrome": "playwright test --project='chromium'"
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
